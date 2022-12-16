@@ -1,0 +1,15 @@
+.col-3.p-3
+  .card.w-100.mt-3.text-black.shadow-sm.p-3
+    .d-flex.flex-column.align-items-center.justify-content-center
+      .col-6.d-flex.justify-content-center
+        .text-capitalize.fw-bold
+          = product.name
+      .col.d-flex.justify-content-center
+        .text-capitalize.fw-bold
+          = product.color
+      .col-12.d-flex.justify-content-center.fs-13
+        .text-capitalize
+          = product.description
+      .col-3.d-flex.justify-content-center
+        .text-capitalize
+          #{product.price} euros

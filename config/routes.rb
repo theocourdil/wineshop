@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'home#home'
+  get 'connexion', to: 'pages#connexion'
+  devise_for :users
+  resources :products
 end
