@@ -1,0 +1,35 @@
+.d-flex.justify-content-center
+  .w-session.p-4
+    .card.bg-light.card-login.mx-auto.mt-5
+      .card-header.bg-dark.text-white.p-title
+        %h5.d-inline.align-baseline
+          Bonjour !
+      .card-body.bg-gray-100
+        - if flash.any?
+          - flash.each do |message_type, message|
+            %div{ class: "alert alert-close alert-#{message_type}"}
+              = message
+
+        = form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false })  do |f|
+          .mb-3
+            = f.label :email, class: 'fs-6 fw-bold mb-1'
+            %br/
+            = f.email_field :email, autofocus: true,
+              autocomplete: "email",
+              class: 'form-control bg-grey inside-shadow no-border'
+          .mb-3
+            = f.label :password, "Mot de passe", class: 'fs-6 fw-bold mb-1'
+            %br/
+            = f.password_field :password, autocomplete: "current-password",
+              class: 'form-control bg-grey inside-shadow no-border'
+          - if devise_mapping.rememberable?
+            .row.justify-content-between.mb-5
+              .col.text-start
+                = f.check_box :remember_me, class: 'inside-shadow'
+                = f.label :remember_me, "Se souvenir de moi"
+              .col.text-end
+                = link_to "Mot de passe oublié?",
+                  new_password_path(resource_name)
+          .mb-3.text-center
+            = f.submit "Connexion",
+              class: 'btn btn-primary rounded-pill px-5'
