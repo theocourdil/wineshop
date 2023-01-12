@@ -24,3 +24,9 @@
       price: 110
     }
     ])
+
+    User.create([{
+        email: "courdiltheo@gmail.com",
+        password: "Test123",
+        admin: true
+    }])
