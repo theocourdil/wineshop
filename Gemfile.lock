@@ -210,6 +210,7 @@ GEM
     sqlite3 (1.5.4-x64-mingw-ucrt)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    stripe (8.1.0)
     temple (0.9.1)
     thor (1.2.1)
     tilt (2.0.11)
@@ -260,6 +261,7 @@ DEPENDENCIES
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
+  stripe
   turbo-rails
   tzinfo-data
   web-console
