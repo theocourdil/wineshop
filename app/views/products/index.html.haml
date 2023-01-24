@@ -1,4 +1,7 @@
 .h-2.p-4
   Nos vins
-.d-flex.justify-content-center
+.col-11.d-flex.justify-content-end
+  - if current_user
+    = link_to "Nouveau produit", new_product_path, class: "button text-black"
+.col-12.d-flex.justify-content-center.flex-wrap
   = render partial: "products/card", collection: @products, as: :product

@@ -1,0 +1,24 @@
+.mt-5.ms-5.fs-14
+    = link_to products_path, class: "text-black text-decoration-underline " do
+        Retour
+.d-flex.justify-content-center.mt-5          
+    .col-10.d-flex.flex-column
+        = form_with model: @product do |f|
+            .text-center.w-100.mt-3
+                = f.label :name, 'Nom du produit', class: 'col-8 h6'
+                = f.text_field :name, class: 'col-12 mb-3 form-control'
+            .text-center.w-100.mt-3
+                = f.label :color, 'Couleur', class: 'col-8 h6'
+                = f.text_field :color, class: 'col-12 mb-3 form-control'
+            .text-center.w-100.mt-3
+                = f.label :description, 'description', class: 'col-8 h6'
+                = f.text_field :description, class: 'form-control'
+            .text-center.w-100.mt-3
+                = f.label :price, 'Prix', class: 'col-8 h6'
+                = f.text_field :price, class: 'form-control'
+            .text-center.w-100.mt-3
+                = f.label :image, 'Image', class: 'col-8 h6'
+                = f.file_field :image, class: 'form-control'
+            
+            .text-center.mt-3
+                = f.submit @product.new_record? ? "Créer" : "Éditer", class: "button-contact-tastee border-0"
