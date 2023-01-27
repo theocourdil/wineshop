@@ -13,3 +13,4 @@
       .d-flex.justify-content-center
         .fs-15
           #{product.price} euros
+      %script.stripe-button{"data-amount" => "#{@amount}", "data-description" => product.name, "data-key" => "pk_test_51MRukRHrjgxmzhIRPPogi98arV1KyjiZoQgUVMFVf2YDCLBVs2q0lw3w7pbvctJqgHpomh2o3t1EFDRwu0h3BcGB00Ps7hxgBj", "data-locale" => "auto", src: "https://checkout.stripe.com/checkout.js"}
