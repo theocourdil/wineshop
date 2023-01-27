@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   
   root to: 'products#index', as: 'home'
   resources :products
+  resources :charges, only: [:new, :create]
 end
