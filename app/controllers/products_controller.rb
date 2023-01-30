@@ -1,11 +1,21 @@
 class ProductsController < ApplicationController
-    before_action :set_products, only: [:index]
+    before_action :set_product, only: [:edit, :update, :destroy]
 
     def index
       @products = Product.all
     end
 
     def edit
+    end
+
+    def update
+      if @product.update(product_params)
+        flash[:success] = "Bout de phrase mis à jour avec succès"
+        redirect_to products_path(redirect_html: true)
+      else
+        flash[:danger] = @product.errors.full_messages.to_sentence
+        render_flash
+      end
     end
 
     def new
@@ -23,12 +33,22 @@ class ProductsController < ApplicationController
         end
     end
 
+    def destroy
+      if @product.destroy
+        flash[:success] = "Bout de phrase supprimée avec succès"
+        redirect_to products_path
+      else
+        flash[:danger] = @product.errors.full_messages.to_sentence
+        render_flash
+      end
+    end
+
     private
     def product_params
       params.require(:product).permit(:name, :color, :description, :image, :price)
     end
 
-    def set_products
-      @products = Product.all
+    def set_product
+      @product = Product.find(params[:id])
     end
 end
