@@ -1,19 +1,14 @@
 .sticky-top.p-3.fs-15
-  %ul.d-flex.justify-content-between.nav.nav-pills.mb-sm-auto.align-items-start
-    - if user_signed_in?
-      %li.nav-item
-        = link_to destroy_user_session_path, class: 'nav-link px-0 d-lg-none text-decoration-none text-link sidebar' do
-          %span.fas.fa-power-off
-            Déconnexion
-
+  %ul.d-flex.nav.nav-pills.mb-sm-auto.align-items-start
     %li.px-0.nav-item.nav-link.text-sidebar
-      %span
-        %span
+      - if current_user && current_user.admin
+        = link_to "Nouveau produit", new_product_path, class: "sidebar-hover"
+    %li.px-0.nav-item.nav-link.text-sidebar
+      .ps-3
         = link_to "Produits", products_path, class: "sidebar-hover"
-
+    
     %li.px-0.nav-item.nav-link.text-sidebar
-      %span
-        %span
+      .ps-3
         - if current_user
           = link_to 'Déconnexion', destroy_user_session_path,
                                     class: 'text-white'                        
