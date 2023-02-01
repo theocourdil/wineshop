@@ -10,11 +10,11 @@ class ProductsController < ApplicationController
 
     def update
       if @product.update(product_params)
-        flash[:success] = "Bout de phrase mis à jour avec succès"
+        flash[:success] = "Produit mis à jour avec succès"
         redirect_to products_path(redirect_html: true)
       else
-        flash[:danger] = @product.errors.full_messages.to_sentence
-        render_flash
+        redirect_to products_path(redirect_html: true)
+        flash[:danger] = "Il vous faut remplir tout les champs"
       end
     end
 
@@ -28,24 +28,24 @@ class ProductsController < ApplicationController
           flash[:success] = "Produit sauvegardé avec succès"
           redirect_to products_path
         else
-          flash[:alert] = @product.errors.full_messages.to_sentence
-          redirect_to new_product_path
+          redirect_to products_path
+          flash[:danger] = "Il vous faut remplir tout les champs"
         end
     end
 
     def destroy
       if @product.destroy
-        flash[:success] = "Bout de phrase supprimée avec succès"
+        flash[:success] = "Produit supprimée avec succès"
         redirect_to products_path
       else
         flash[:danger] = @product.errors.full_messages.to_sentence
-        render_flash
+        redirect_to products_path
       end
     end
 
     private
     def product_params
-      params.require(:product).permit(:name, :color, :description, :image, :price)
+      params.require(:product).permit(:name, :color, :description, :price)
     end
 
     def set_product
