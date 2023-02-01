@@ -16,9 +16,5 @@
             .text-center.w-100.mt-3
                 = f.label :price, 'Prix', class: 'col-8 h6'
                 = f.text_field :price, class: 'form-control'
-            .text-center.w-100.mt-3
-                = f.label :image, 'Image', class: 'col-8 h6'
-                = f.file_field :image, class: 'form-control'
-            
             .text-center.mt-3
                 = f.submit @product.new_record? ? "Créer" : "Éditer", class: "button-contact-tastee border-0"
