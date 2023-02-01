@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'connect' => 'devise/sessions#connect'
   end
 
-  resources :products, except: [:show]
+  resources :products
   
   root to: 'products#index', as: 'home'
   resources :charges, only: [:new, :create]
