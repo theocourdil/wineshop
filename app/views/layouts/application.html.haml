@@ -14,6 +14,8 @@
         .col-sm-3.col-lg-12.px-sm-2.px-0.bg-sidebar.d-none.d-sm-block{data: { toggle_target: 'toggleElement' }}
           = render 'shared/navbar'
         %main.col-lg-12.px-0
-          .sticky.d-flex.justify-content-center.align-items-baseline.box_shadow.px-4.py-2
+          .w-100.px-4.py-2
             .my-3.px-2
+              .d-flex.justify-content-end.w-20
+                = render 'shared/flash'
               = yield
