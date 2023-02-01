@@ -4,8 +4,9 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'    
     get 'connect' => 'devise/sessions#connect'
   end
+
+  resources :products, except: [:show]
   
   root to: 'products#index', as: 'home'
-  resources :products
   resources :charges, only: [:new, :create]
 end
