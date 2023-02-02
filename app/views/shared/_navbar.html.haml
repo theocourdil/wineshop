@@ -13,7 +13,10 @@
           - if current_user
             = link_to 'Déconnexion', destroy_user_session_path,
                                       class: 'text-white'   
-            = link_to 'Profil', edit_user_registration_path, class: "ps-3"                    
+            - if current_user.avatar.attached?
+              %image{src: "#{(url_for(current_user.avatar))}", style: "width: 250px; height: 300px"}
+            - else
+              = link_to "Profil", edit_user_registration_path, class: "ps-3"                    
           - else
             .d-flex.px-4
               = link_to "Se connecter", new_user_session_path, 

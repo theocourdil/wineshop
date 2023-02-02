@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
     end
 
     def create
+      @product = 25100
       @product = Product.create(product_params)  
         if @product.save
           flash[:success] = "Produit sauvegardé avec succès"
@@ -31,6 +32,12 @@ class ProductsController < ApplicationController
           redirect_to products_path
           flash[:danger] = "Il vous faut remplir tout les champs"
         end
+
+      customer = StripeTool.create_customer(email: params[:stripeEmail], 
+                                            stripe_token: params[:stripeToken])
+
+      charge = StripeTool.create_charge(customer_id: customer.id, 
+                                        amount: @amount)
     end
 
     def destroy
@@ -45,7 +52,7 @@ class ProductsController < ApplicationController
 
     private
     def product_params
-      params.require(:product).permit(:name, :color, :description, :image, :price)
+      params.require(:product).permit(:name, :color, :description, :year, :image, :price)
     end
 
     def set_product

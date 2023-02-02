@@ -18,8 +18,8 @@
         .d-flex.mt-3
           = form_tag charges_path do
             .fs-15
-              Prix: #{pretty_amount(product.price)}
-            %script.stripe-button.bg-secondary{"data-amount" => product.price, "data-description" => product.name, "data-key" => 'pk_test_51MRukRHrjgxmzhIRPPogi98arV1KyjiZoQgUVMFVf2YDCLBVs2q0lw3w7pbvctJqgHpomh2o3t1EFDRwu0h3BcGB00Ps7hxgBj', "data-locale" => "auto", src: "https://checkout.stripe.com/checkout.js"}
+              Prix: #{product.price} euros
+            %script.stripe-button{"data-amount" => (product.price * 100), "data-description" => product.name, "data-key" => 'pk_test_51MRukRHrjgxmzhIRPPogi98arV1KyjiZoQgUVMFVf2YDCLBVs2q0lw3w7pbvctJqgHpomh2o3t1EFDRwu0h3BcGB00Ps7hxgBj', "data-locale" => "auto", src: "https://checkout.stripe.com/checkout.js"}
         .d-flex.mt-3
           - if current_user && current_user.admin
             .me-2
