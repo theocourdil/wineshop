@@ -1,0 +1,17 @@
+%h1.text-center
+  = pluralize(@products.count, "Resultats") 
+%table
+  %thead
+    %tr
+      %th= sort_link(@query, :name, "name", default_order: :asc)
+      %th= sort_link(@query, :color, "Couleur du vin", default_order: :desc)
+      %th{colspan: "3"}
+.d-flex.justify-content-center.align-items-center
+  - @products.each do |product|
+    .card.w-100.mt-3.text-black.shadow-sm.p-3.me-4
+      .d-flex.flex-column.align-items-center.justify-content-center
+        .d-flex.justify-content-center
+          = product.name
+          = product.color
+
+        
