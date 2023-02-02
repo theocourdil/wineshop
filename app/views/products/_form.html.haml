@@ -16,8 +16,11 @@
             .text-center.w-100.mt-3
                 = f.label :price, 'Prix', class: 'col-8 h6'
                 = f.text_field :price, class: 'form-control'
+            .d-flex.flex-column.text-center.w-100.mt-3
+                = f.label :millesime, 'Millésime', class: 'col-11 fs-13 mb-1 fw-bold'
+                = f.select :year, (Time.zone.now.year - 100)..(Time.zone.now.year), class: 'col-11 fs-13 mb-1 fw-bold'
             .text-center.w-100.mt-3 
                 = f.label 'Photo'
                 = f.file_field :image
             .text-center.mt-3
-                = f.submit @product.new_record? ? "Créer" : "Éditer", class: "button-contact-tastee border-0"
+                = f.submit @product.new_record? ? "Créer" : "Éditer", class: "btn btn-primary border-0"
