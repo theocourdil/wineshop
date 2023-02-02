@@ -12,14 +12,13 @@
         .ps-3
           - if current_user
             = link_to 'Déconnexion', destroy_user_session_path,
-                                      class: 'text-white'                        
+                                      class: 'text-white'   
+            = link_to 'Profil', edit_user_registration_path, class: "ps-3"                    
           - else
             .d-flex.px-4
               = link_to "Se connecter", new_user_session_path, 
                                         class: "text-white"
-      %li.px-0.nav-item.nav-link.text-sidebar
-        .ps-3
-          = link_to 'Profil', edit_user_registration_path
+      
     .d-flex.justify-content-end
       = render 'search/form' 
             
