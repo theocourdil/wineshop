@@ -1,20 +1,28 @@
 .sticky-top.p-3.fs-15
-  %ul.d-flex.nav.nav-pills.mb-sm-auto.align-items-start
-    %li.px-0.nav-item.nav-link.text-sidebar
-      - if current_user && current_user.admin
-        = link_to "Nouveau produit", new_product_path, class: "sidebar-hover"
-    %li.px-0.nav-item.nav-link.text-sidebar
-      .ps-3
-        = link_to "Produits", products_path, class: "sidebar-hover"
-    
-    %li.px-0.nav-item.nav-link.text-sidebar
-      .ps-3
-        - if current_user
-          = link_to 'Déconnexion', destroy_user_session_path,
-                                    class: 'text-white'                        
-        - else
-          .d-flex.px-4
-            = link_to "Se connecter", new_user_session_path, 
-                                      class: "text-white"
+  .d-flex.justify-content-between
+    %ul.d-flex.nav.nav-pills.mb-sm-auto
+      %li.px-0.nav-item.nav-link.text-sidebar
+        - if current_user && current_user.admin
+          = link_to "Nouveau produit", new_product_path, class: "sidebar-hover"
+      %li.px-0.nav-item.nav-link.text-sidebar
+        .ps-3
+          = link_to "Produits", products_path, class: "sidebar-hover"
+      
+      %li.px-0.nav-item.nav-link.text-sidebar
+        .ps-3
+          - if current_user
+            = link_to 'Déconnexion', destroy_user_session_path,
+                                      class: 'text-white'                        
+          - else
+            .d-flex.px-4
+              = link_to "Se connecter", new_user_session_path, 
+                                        class: "text-white"
+      %li.px-0.nav-item.nav-link.text-sidebar
+        .ps-3
+          = link_to 'Profil', edit_user_registration_path
+    .d-flex.justify-content-end
+      = render 'search/form' 
+            
+
 
 
