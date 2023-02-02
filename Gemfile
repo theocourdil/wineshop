@@ -33,6 +33,8 @@ gem 'devise'
 
 gem 'cancancan'
 
+gem "ransack", "~> 3.2"
+
 gem 'stripe'
 
 gem 'dotenv-rails', :groups => [:development, :test]
@@ -78,5 +80,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'rspec-rails'
 end
-
