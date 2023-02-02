@@ -22,14 +22,8 @@
             %br/
             = f.password_field :password, autocomplete: "current-password",
               class: 'form-control bg-grey inside-shadow no-border'
-          - if devise_mapping.rememberable?
-            .row.justify-content-between.mb-5
-              .col.text-start
-                = f.check_box :remember_me, class: 'inside-shadow'
-                = f.label :remember_me, "Se souvenir de moi"
-              .col.text-end
-                = link_to "Mot de passe oublié?",
-                  new_password_path(resource_name)
+          .mb-3
+            = link_to 'Créer un compte', new_user_registration_path, class:"text-black"
           .mb-3.text-center
             = f.submit "Connexion",
               class: 'btn btn-primary rounded-pill px-5'
