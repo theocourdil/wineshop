@@ -20,7 +20,7 @@
     { 
       name: "Chateau Smith Haut Lafitte", 
       color: "Rouge", 
-      description: "Un monument qui allie puissance et élégance. Un régal", 
+      description: "Un monument qui allie puissance et élégance. Un régal",
       price: 110
     }
     ])
