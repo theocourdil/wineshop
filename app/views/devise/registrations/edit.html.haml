@@ -1,0 +1,41 @@
+.d-flex.justify-content-center
+  .w-session.p-4
+    .card.bg-light.card-login.mx-auto.mt-5
+      .card-header.bg-dark.text-white.p-title
+        %h5.d-inline.align-baseline
+          Bonjour !
+      .card-body.bg-gray-100
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          %h2
+            Edit #{resource_name.to_s.humanize}
+          .field
+            = f.label :email
+            %br
+            = f.email_field :email, autofocus: true, autocomplete: "email"
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %div
+              Currently waiting confirmation for: #{resource.unconfirmed_email}
+          .field.mt-2
+            = f.label "Mot de passe"
+            %br/
+            = f.password_field :password, autocomplete: "new-password"
+            - if @minimum_password_length
+              %br/
+              %em
+                = @minimum_password_length
+                characters minimum
+          .field
+            = f.label "Confirmer le mot de passe"
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password"
+          .field
+            = f.label :current_password
+            %i (Mot de passe actuel)
+            %br/
+            = f.password_field :current_password, autocomplete: "current-password"
+          .field
+            %br
+            = f.file_field :avatar
+          .actions.mt-2
+            = f.submit "Update"
